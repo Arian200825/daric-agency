@@ -44,7 +44,7 @@ export function Hero() {
             variants={staggerItem}
             className="max-w-2xl text-pretty text-lg leading-relaxed text-muted sm:text-xl"
           >
-            Cobalt is a premium, AI-powered web agency. We design and build fast,
+            Daric is a premium, AI-powered web agency. We design and build fast,
             beautiful, conversion-focused websites that make high-end brands look
             — and perform — like industry leaders.
           </motion.p>

@@ -6,16 +6,16 @@
  */
 
 export const site = {
-  name: "Cobalt",
-  legalName: "Cobalt", // NEEDS_INPUT: registered company name once formed
+  name: "Daric",
+  legalName: "Daric", // NEEDS_INPUT: registered company name once formed
   tagline: "Websites That Define Your Brand.",
   description:
-    "Cobalt is a premium AI-powered web agency designing and building high-performance websites for high-end businesses.",
-  url: "https://cobalt.design", // primary domain (verified available)
+    "Daric is a premium AI-powered web agency designing and building high-performance websites for high-end businesses.",
+  url: "https://daric.agency", // primary domain (placeholder — confirm/register)
   locale: "en",
 
   contact: {
-    email: "hello@cobalt.design", // default tied to domain — confirm once mailbox exists
+    email: "hello@daric.agency", // default tied to domain — confirm once mailbox exists
     phone: "", // NEEDS_INPUT
     location: "Remote · Worldwide", // NEEDS_INPUT
     bookingUrl: "", // NEEDS_INPUT: Calendly/Cal.com link for "Book a call"

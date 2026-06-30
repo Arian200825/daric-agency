@@ -1,6 +1,7 @@
-# Cobalt — Agency Website
+# Daric — Agency Website
 
-A premium, high-performance marketing site for the Cobalt web agency.
+A premium, high-performance marketing site for the Daric web agency
+(named after the ancient Persian gold coin — value, craftsmanship, longevity).
 Built with **Next.js 16 (App Router)**, **TypeScript**, **Tailwind CSS v4**,
 **Framer Motion**, and **Supabase** (contact lead capture).
 
@@ -56,12 +57,12 @@ The app is configured for **static export** (`output: "export"` in
 
 ```bash
 # Build with the project base path (repo name) and publish the gh-pages branch:
-NEXT_PUBLIC_BASE_PATH=/cobalt npm run build   # outputs ./out
+NEXT_PUBLIC_BASE_PATH=/daric npm run build   # outputs ./out
 # (CI/script pushes ./out to the gh-pages branch)
 ```
 
-- Live (temporary): `https://arian200825.github.io/cobalt/`
-- For a custom domain (e.g. `cobalt.design`), build **without** `NEXT_PUBLIC_BASE_PATH`
+- Live (temporary): `https://arian200825.github.io/daric/`
+- For a custom domain (e.g. `daric.agency`), build **without** `NEXT_PUBLIC_BASE_PATH`
   and point the domain at Pages (or deploy to Vercel/Netlify for full SSR).
 - To enable live lead capture on the deployed site, build with
   `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` set in the

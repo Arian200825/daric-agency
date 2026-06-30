@@ -1,4 +1,4 @@
--- Cobalt — lead capture schema
+-- Daric — lead capture schema
 -- Run this in Supabase → SQL Editor (one time).
 
 create table if not exists public.leads (

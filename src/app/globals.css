@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 /*
- * COBALT — Design tokens
+ * DARIC — Design tokens
  * ----------------------------------------------------------------------------
- * Dark-luxury aesthetic with an electric cobalt accent.
+ * Dark-luxury aesthetic with a Daric gold accent (named after the ancient
+ * Persian gold coin — value, craftsmanship, premium quality).
  * All color/spacing decisions live here as CSS variables so the whole site
  * re-themes from one place. Dark mode is class-based (`.dark` on <html>) and
  * driven by next-themes.
@@ -23,32 +24,33 @@
   --border: rgba(10, 11, 13, 0.1);
   --input: rgba(10, 11, 13, 0.12);
 
-  /* Electric cobalt accent */
-  --accent: #2f54ff;
-  --accent-hover: #1f44f0;
+  /* Daric gold accent (deep gold for AA contrast with white text in light mode) */
+  --accent: #8a6618;
+  --accent-hover: #74550f;
   --accent-foreground: #ffffff;
-  --accent-soft: rgba(47, 84, 255, 0.1);
-  --ring: rgba(47, 84, 255, 0.45);
+  --accent-soft: rgba(138, 102, 24, 0.1);
+  --ring: rgba(138, 102, 24, 0.45);
 
   --radius: 0.875rem;
 }
 
 .dark {
-  /* Dark theme (primary) — near-black with a faint blue cast */
-  --background: #07080b;
-  --background-subtle: #0c0e13;
-  --foreground: #f3f5f8;
-  --muted: #9aa3b2;
-  --card: #0d0f15;
+  /* Dark theme (primary) — warm near-black befitting a gold accent */
+  --background: #0a0907;
+  --background-subtle: #100e0a;
+  --foreground: #f5f1e8;
+  --muted: #a8a08f;
+  --card: #14110c;
   --card-border: rgba(255, 255, 255, 0.08);
   --border: rgba(255, 255, 255, 0.1);
   --input: rgba(255, 255, 255, 0.14);
 
-  --accent: #4f74ff;
-  --accent-hover: #6b8aff;
-  --accent-foreground: #ffffff;
-  --accent-soft: rgba(79, 116, 255, 0.14);
-  --ring: rgba(79, 116, 255, 0.5);
+  /* Luminous gold on near-black; dark text sits on gold buttons */
+  --accent: #e3c178;
+  --accent-hover: #ecd193;
+  --accent-foreground: #1a1206;
+  --accent-soft: rgba(227, 193, 120, 0.14);
+  --ring: rgba(227, 193, 120, 0.5);
 }
 
 /* Map tokens to Tailwind theme so utilities like bg-background, text-muted,

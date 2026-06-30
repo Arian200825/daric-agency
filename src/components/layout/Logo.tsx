@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { site } from "@/content/site";
 
 /**
- * Logo — the Cobalt wordmark. The accent dot doubles as the brand mark.
+ * Logo — the Daric wordmark. The accent dot doubles as the brand mark.
  * Swap for an SVG/image logo here once branding is finalized.
  */
 export function Logo({ className }: { className?: string }) {

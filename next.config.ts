@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 /**
  * Static export so the site can deploy to GitHub Pages (and any static host).
  * `NEXT_PUBLIC_BASE_PATH` is set at build time for project Pages
- * (e.g. "/cobalt" → arian200825.github.io/cobalt); empty for local dev and
+ * (e.g. "/daric" → arian200825.github.io/daric); empty for local dev and
  * custom-domain deploys.
  */
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";

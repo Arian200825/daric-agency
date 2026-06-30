@@ -10,7 +10,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Contact",
   description:
-    "Start your project with Cobalt. Tell us what you're building and we'll reply within one business day.",
+    "Start your project with Daric. Tell us what you're building and we'll reply within one business day.",
   path: "/contact",
 });
 

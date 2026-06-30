@@ -11,7 +11,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "About",
   description:
-    "Cobalt is a premium digital bureau obsessed with craft, speed, and measurable results for ambitious brands.",
+    "Daric is a premium digital bureau obsessed with craft, speed, and measurable results for ambitious brands.",
   path: "/about",
 });
 
@@ -45,7 +45,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About"
         title="A premium bureau built for ambitious brands"
-        description="Cobalt exists to give growing companies the kind of website usually reserved for the industry's biggest players — without the agency bloat."
+        description="Daric exists to give growing companies the kind of website usually reserved for the industry's biggest players — without the agency bloat."
       />
 
       <Section>
