@@ -70,7 +70,7 @@ export default function AboutPage() {
             className="relative overflow-hidden rounded-3xl border border-card-border bg-card p-8"
           >
             <div className="pointer-events-none absolute inset-0 -z-10">
-              <div className="absolute right-[-20%] top-[-20%] h-[280px] w-[280px] rounded-full bg-accent/15 blur-[100px]" />
+              <div className="absolute right-[-20%] top-[-20%] h-[280px] w-[280px] rounded-full bg-accent/[0.06] blur-[100px]" />
             </div>
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
               Our promise

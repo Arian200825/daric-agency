@@ -1,60 +1,55 @@
 @import "tailwindcss";
 
 /*
- * DARIC — Design tokens
+ * DARIC AGENCY — Design tokens
  * ----------------------------------------------------------------------------
- * Dark-luxury aesthetic with a Daric gold accent (named after the ancient
- * Persian gold coin — value, craftsmanship, premium quality).
- * All color/spacing decisions live here as CSS variables so the whole site
- * re-themes from one place. Dark mode is class-based (`.dark` on <html>) and
- * driven by next-themes.
+ * Modern, technical, minimal: a technology-company aesthetic.
+ * Monochrome (black / white / neutral gray) with SMALL gold accents only —
+ * deliberately distinct from the warm, dark, gold restaurant identity.
+ * Class-based dark mode via next-themes.
  */
 
-/* Enable class-based dark mode for Tailwind v4 utilities (dark:*) */
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  /* Light theme */
+  /* Light theme (default) — crisp, spacious, professional */
   --background: #ffffff;
-  --background-subtle: #f6f7f9;
-  --foreground: #0a0b0d;
-  --muted: #5b6472;
+  --background-subtle: #f5f5f6;
+  --foreground: #0a0a0a;
+  --muted: #6b6b70;
   --card: #ffffff;
-  --card-border: rgba(10, 11, 13, 0.08);
-  --border: rgba(10, 11, 13, 0.1);
-  --input: rgba(10, 11, 13, 0.12);
+  --card-border: rgba(10, 10, 10, 0.09);
+  --border: rgba(10, 10, 10, 0.1);
+  --input: rgba(10, 10, 10, 0.14);
 
-  /* Daric gold accent (deep gold for AA contrast with white text in light mode) */
-  --accent: #8a6618;
-  --accent-hover: #74550f;
+  /* Gold — used ONLY as a small accent (dots, marks, one keyword). */
+  --accent: #9c7a24;
+  --accent-hover: #856618;
   --accent-foreground: #ffffff;
-  --accent-soft: rgba(138, 102, 24, 0.1);
-  --ring: rgba(138, 102, 24, 0.45);
+  --accent-soft: rgba(156, 122, 36, 0.1);
+  --ring: rgba(10, 10, 10, 0.55);
 
-  --radius: 0.875rem;
+  --radius: 0.5rem;
 }
 
 .dark {
-  /* Dark theme (primary) — warm near-black befitting a gold accent */
-  --background: #0a0907;
-  --background-subtle: #100e0a;
-  --foreground: #f5f1e8;
-  --muted: #a8a08f;
-  --card: #14110c;
-  --card-border: rgba(255, 255, 255, 0.08);
+  /* Dark theme — neutral (cool) near-black, no warm cast */
+  --background: #0a0a0b;
+  --background-subtle: #101012;
+  --foreground: #f4f4f5;
+  --muted: #9a9aa1;
+  --card: #101012;
+  --card-border: rgba(255, 255, 255, 0.09);
   --border: rgba(255, 255, 255, 0.1);
   --input: rgba(255, 255, 255, 0.14);
 
-  /* Luminous gold on near-black; dark text sits on gold buttons */
-  --accent: #e3c178;
-  --accent-hover: #ecd193;
-  --accent-foreground: #1a1206;
-  --accent-soft: rgba(227, 193, 120, 0.14);
-  --ring: rgba(227, 193, 120, 0.5);
+  --accent: #d8b25f;
+  --accent-hover: #e6c479;
+  --accent-foreground: #0a0a0b;
+  --accent-soft: rgba(216, 178, 95, 0.14);
+  --ring: rgba(255, 255, 255, 0.5);
 }
 
-/* Map tokens to Tailwind theme so utilities like bg-background, text-muted,
-   border-border, bg-accent, rounded-xl(=--radius) all resolve. */
 @theme inline {
   --color-background: var(--background);
   --color-background-subtle: var(--background-subtle);
@@ -70,12 +65,12 @@
   --color-accent-soft: var(--accent-soft);
   --color-ring: var(--ring);
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 
   --radius-xl: var(--radius);
 
-  /* Shared easing + reveal animation for motion consistency */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -96,19 +91,23 @@
     font-family: var(--font-sans), system-ui, sans-serif;
   }
 
-  /* Consistent, accessible focus ring across the site */
+  /* Geometric-sans headings — technical, confident */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display), var(--font-sans), sans-serif;
+    letter-spacing: -0.02em;
+  }
+
   :focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--ring);
     outline-offset: 2px;
     border-radius: 4px;
   }
 
   ::selection {
-    background: var(--accent);
-    color: var(--accent-foreground);
+    background: var(--foreground);
+    color: var(--background);
   }
 
-  /* Respect users who prefer reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -121,28 +120,16 @@
   }
 }
 
-/* Reusable helpers */
 @layer utilities {
-  /* Gradient text for accent headlines */
+  /* One-keyword headline highlight (the only prominent gold moment). */
   .text-gradient {
-    background: linear-gradient(
-      120deg,
-      var(--foreground) 30%,
-      var(--accent) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--accent);
   }
 
-  /* Subtle grid / glow backdrops used in hero + section dividers */
+  /* Technical grid backdrop. */
   .bg-grid {
-    background-image: linear-gradient(
-        to right,
-        var(--border) 1px,
-        transparent 1px
-      ),
+    background-image: linear-gradient(to right, var(--border) 1px, transparent 1px),
       linear-gradient(to bottom, var(--border) 1px, transparent 1px);
-    background-size: 64px 64px;
+    background-size: 56px 56px;
   }
 }

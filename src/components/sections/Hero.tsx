@@ -18,7 +18,7 @@ export function Hero() {
       {/* Backdrop: grid + radial accent glow */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="bg-grid absolute inset-0 opacity-[0.35] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
-        <div className="absolute left-1/2 top-[-10%] h-[480px] w-[820px] -translate-x-1/2 rounded-full bg-accent/20 blur-[120px]" />
+        <div className="absolute left-1/2 top-[-10%] h-[480px] w-[820px] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-[120px]" />
       </div>
 
       <Container className="flex flex-col items-center py-24 text-center sm:py-32 lg:py-40">

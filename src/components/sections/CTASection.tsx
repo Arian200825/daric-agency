@@ -20,7 +20,7 @@ export function CTASection({
       <Container>
         <Reveal className="relative overflow-hidden rounded-3xl border border-card-border bg-card px-8 py-16 text-center sm:px-16 sm:py-20">
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute left-1/2 top-1/2 h-[360px] w-[640px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/15 blur-[120px]" />
+            <div className="absolute left-1/2 top-1/2 h-[360px] w-[640px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/[0.05] blur-[120px]" />
           </div>
           <h2 className="mx-auto max-w-2xl text-balance text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
             {title}

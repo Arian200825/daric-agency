@@ -6,13 +6,12 @@ type Variant = "primary" | "secondary" | "outline" | "ghost";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none whitespace-nowrap";
+  "inline-flex items-center justify-center gap-2 rounded-[var(--radius)] font-medium transition-all duration-200 focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none whitespace-nowrap";
 
+// Monochrome, product-focused buttons — no gold fills (gold stays a small accent).
 const variants: Record<Variant, string> = {
-  primary:
-    "bg-accent text-accent-foreground hover:bg-accent-hover shadow-[0_8px_30px_-8px_var(--accent)] hover:shadow-[0_12px_40px_-8px_var(--accent)]",
-  secondary:
-    "bg-foreground text-background hover:opacity-90",
+  primary: "bg-foreground text-background hover:opacity-90",
+  secondary: "bg-background-subtle text-foreground border border-border hover:border-foreground/25",
   outline:
     "border border-border bg-transparent text-foreground hover:bg-background-subtle hover:border-foreground/20",
   ghost: "bg-transparent text-foreground hover:bg-background-subtle",

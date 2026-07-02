@@ -17,7 +17,7 @@ export function PageHeader({
   return (
     <section className="relative overflow-hidden border-b border-border">
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-[-30%] h-[360px] w-[720px] -translate-x-1/2 rounded-full bg-accent/10 blur-[120px]" />
+        <div className="absolute left-1/2 top-[-30%] h-[360px] w-[720px] -translate-x-1/2 rounded-full bg-accent/[0.05] blur-[120px]" />
       </div>
       <Container className="py-20 sm:py-28">
         <Reveal className="flex max-w-3xl flex-col gap-5">
