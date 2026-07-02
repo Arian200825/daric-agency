@@ -97,10 +97,11 @@ export const industries: Industry[] = [
     slug: "healthcare",
     name: "Dental & Healthcare",
     category: "Healthcare",
-    status: "coming-soon",
+    status: "live",
     tagline: "Trust, booked.",
     description:
       "Calm, credible websites for dental and healthcare practices — designed to build trust and drive new-patient bookings.",
+    demoUrl: "https://arian200825.github.io/daric-medical/",
     gradient: ["#1f6f6b", "#0a0f10"],
     tags: ["New-patient booking", "Trust & credibility", "Treatments"],
     page: {
