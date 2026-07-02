@@ -1,32 +1,33 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { site } from "@/content/site";
-import { fadeUp, staggerContainer, staggerItem } from "@/lib/animations";
+import { staggerContainer, staggerItem } from "@/lib/animations";
+
+const INDUSTRIES = ["Restaurants", "Hotels", "Healthcare", "Automotive"];
 
 /**
- * Hero — the primary conversion surface. Animated headline, dual CTA, and a
- * subtle grid + glow backdrop that reads premium in dark mode.
+ * Hero — left-aligned, asymmetric, technical (a product/engineering composition).
+ * Grid backdrop + a monospace industry strip signal a technology company.
  */
 export function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      {/* Backdrop: grid + radial accent glow */}
+    <section className="relative overflow-hidden border-b border-border">
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="bg-grid absolute inset-0 opacity-[0.35] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
-        <div className="absolute left-1/2 top-[-10%] h-[480px] w-[820px] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-[120px]" />
+        <div className="bg-grid absolute inset-0 opacity-[0.5] [mask-image:radial-gradient(ellipse_at_top_left,black,transparent_75%)]" />
+        <div className="absolute left-[10%] top-[-10%] h-[420px] w-[720px] rounded-full bg-accent/[0.06] blur-[120px]" />
       </div>
 
-      <Container className="flex flex-col items-center py-24 text-center sm:py-32 lg:py-40">
+      <Container className="py-24 sm:py-32 lg:py-40">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="flex max-w-4xl flex-col items-center gap-7"
+          className="flex max-w-3xl flex-col items-start gap-7 text-left"
         >
           <motion.div variants={staggerItem}>
             <Eyebrow>{site.tagline}</Eyebrow>
@@ -34,25 +35,22 @@ export function Hero() {
 
           <motion.h1
             variants={staggerItem}
-            className="text-balance text-4xl font-semibold tracking-tight sm:text-6xl lg:text-7xl"
+            className="text-balance text-5xl font-semibold leading-[1.02] sm:text-6xl lg:text-7xl"
           >
-            Premium websites, built for{" "}
-            <span className="text-gradient">your industry</span>.
+            Premium websites,
+            <br />
+            built for <span className="text-gradient">your industry</span>.
           </motion.h1>
 
           <motion.p
             variants={staggerItem}
-            className="max-w-2xl text-pretty text-lg leading-relaxed text-muted sm:text-xl"
+            className="max-w-xl text-pretty text-lg leading-relaxed text-muted"
           >
             Daric is a premium web agency building industry-specific websites —
-            for restaurants, hotels, healthcare, and beyond. Fast, beautiful, and
-            engineered to convert. Explore our live demos below.
+            fast, accessible, and engineered to convert. Explore our live demos.
           </motion.p>
 
-          <motion.div
-            variants={staggerItem}
-            className="mt-2 flex flex-col items-center gap-3 sm:flex-row"
-          >
+          <motion.div variants={staggerItem} className="mt-1 flex flex-col gap-3 sm:flex-row">
             <Button href={site.cta.primary.href} size="lg">
               {site.cta.primary.label}
               <ArrowRight className="h-4 w-4" />
@@ -62,21 +60,18 @@ export function Hero() {
             </Button>
           </motion.div>
 
-          <motion.div
-            variants={fadeUp}
-            className="mt-4 flex items-center gap-2 text-sm text-muted"
+          {/* Technical industry strip */}
+          <motion.ul
+            variants={staggerItem}
+            className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-border pt-6 font-mono text-xs uppercase tracking-[0.15em] text-muted"
           >
-            <span className="flex" aria-hidden>
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                  key={i}
-                  className="h-4 w-4 fill-accent text-accent"
-                  strokeWidth={0}
-                />
-              ))}
-            </span>
-            AI-accelerated craft, end-to-end — strategy, design &amp; development.
-          </motion.div>
+            {INDUSTRIES.map((label, i) => (
+              <li key={label} className="flex items-center gap-3">
+                {i > 0 && <span className="text-border" aria-hidden>/</span>}
+                <span>{label}</span>
+              </li>
+            ))}
+          </motion.ul>
         </motion.div>
       </Container>
     </section>

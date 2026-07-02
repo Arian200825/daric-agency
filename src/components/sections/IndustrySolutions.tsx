@@ -18,7 +18,7 @@ export function IndustrySolutions() {
         const live = ind.status === "live";
         return (
           <Reveal as="article" key={ind.slug} delay={(i % 2) * 0.08}
-            className="flex flex-col gap-6 rounded-3xl border border-card-border bg-card p-5 sm:p-6">
+            className="flex flex-col gap-6 rounded-[var(--radius)] border border-card-border bg-card p-5 sm:p-6">
             <div className="relative">
               <DemoPreview url={ind.demoUrl} label={ind.name} gradient={ind.gradient} />
               <span

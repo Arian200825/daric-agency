@@ -1,7 +1,8 @@
 import { cn } from "@/lib/utils";
 
 /**
- * Eyebrow — small mono label with an accent dot. Sits above section headings.
+ * Eyebrow — monospace technical label with a sharp accent square marker.
+ * (Technology-company detailing — deliberately not a soft dot.)
  */
 export function Eyebrow({
   children,
@@ -13,11 +14,11 @@ export function Eyebrow({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-muted",
+        "inline-flex items-center gap-2.5 font-mono text-xs uppercase tracking-[0.2em] text-muted",
         className
       )}
     >
-      <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
+      <span className="h-2 w-2 bg-accent" aria-hidden />
       {children}
     </span>
   );

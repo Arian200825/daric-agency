@@ -39,7 +39,7 @@ export function DemoPreview({
   }, [url]);
 
   return (
-    <div className={cn("overflow-hidden rounded-xl border border-card-border bg-card", className)}>
+    <div className={cn("overflow-hidden rounded-[var(--radius)] border border-card-border bg-card", className)}>
       {/* Browser chrome */}
       <div className="flex items-center gap-2 border-b border-card-border bg-background-subtle px-4 py-2.5">
         <span className="flex gap-1.5" aria-hidden>
