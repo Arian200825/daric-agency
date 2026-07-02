@@ -32,14 +32,14 @@ export const site = {
   // Primary calls-to-action reused across the site.
   cta: {
     primary: { label: "Start a project", href: "/contact" },
-    secondary: { label: "View work", href: "/portfolio" },
+    secondary: { label: "View live demos", href: "/solutions" },
   },
 } as const;
 
 /** Main navigation — drives the navbar and footer sitemap. */
 export const nav = [
+  { label: "Solutions", href: "/solutions" },
   { label: "Services", href: "/services" },
-  { label: "Work", href: "/portfolio" },
   { label: "Process", href: "/process" },
   { label: "Pricing", href: "/pricing" },
   { label: "About", href: "/about" },

@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Hero } from "@/components/sections/Hero";
+import { IndustrySolutions } from "@/components/sections/IndustrySolutions";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
 import { PortfolioGrid } from "@/components/sections/PortfolioGrid";
@@ -30,8 +31,26 @@ export default function Home() {
 
       <Hero />
 
+      {/* Industry Solutions — Daric's core positioning */}
+      <Section id="industries">
+        <div className="flex flex-col gap-12">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <SectionHeading
+              eyebrow="Industry solutions"
+              title="Premium websites, built for your industry"
+              description="We don't do generic. Daric builds conversion-focused websites tailored to the businesses we know best — each a ready-to-launch, customizable solution."
+            />
+            <Button href="/solutions" variant="outline">
+              All solutions
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </div>
+          <IndustrySolutions />
+        </div>
+      </Section>
+
       {/* Services */}
-      <Section id="services">
+      <Section id="services" className="border-t border-border bg-background-subtle">
         <div className="flex flex-col gap-12">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
@@ -49,7 +68,7 @@ export default function Home() {
       </Section>
 
       {/* Process */}
-      <Section className="border-t border-border bg-background-subtle">
+      <Section className="border-t border-border">
         <div className="flex flex-col gap-12">
           <SectionHeading
             eyebrow="How we work"
@@ -60,17 +79,17 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Work */}
-      <Section>
+      {/* Concept explorations */}
+      <Section className="border-t border-border bg-background-subtle">
         <div className="flex flex-col gap-12">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
-              eyebrow="Selected work"
-              title="Concepts crafted with intent"
-              description="A look at how we approach premium design and conversion across industries."
+              eyebrow="Concept explorations"
+              title="Design directions across industries"
+              description="Beyond our flagship solutions, a look at how we approach premium design and conversion for other sectors."
             />
             <Button href="/portfolio" variant="outline">
-              View all work
+              View concepts
               <ArrowRight className="h-4 w-4" />
             </Button>
           </div>
@@ -79,7 +98,7 @@ export default function Home() {
       </Section>
 
       {/* Pricing */}
-      <Section className="border-t border-border bg-background-subtle">
+      <Section className="border-t border-border">
         <div className="flex flex-col gap-12">
           <SectionHeading
             eyebrow="Pricing"

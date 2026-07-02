@@ -1,5 +1,4 @@
 import { Check } from "lucide-react";
-import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";

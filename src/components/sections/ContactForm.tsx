@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { budgetOptions, validateLead, type LeadInput } from "@/lib/leads";
 import { getSupabase } from "@/lib/supabase";
 import { site } from "@/content/site";
+import { getIndustry } from "@/content/industries";
 import { cn } from "@/lib/utils";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -24,6 +25,10 @@ const labelClass = "mb-1.5 block text-sm font-medium";
 export function ContactForm() {
   const searchParams = useSearchParams();
   const plan = searchParams.get("plan") ?? "";
+  const industryName = getIndustry(searchParams.get("industry") ?? "")?.name ?? "";
+  const prefill = industryName
+    ? `Hi Daric — I'd like a premium ${industryName.toLowerCase()} website like your live demo. A little about my business:\n\n`
+    : "";
 
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<
@@ -104,6 +109,12 @@ export function ContactForm() {
 
       <input type="hidden" name="plan" defaultValue={plan} />
 
+      {industryName && (
+        <p className="rounded-xl border border-accent/30 bg-accent-soft px-4 py-3 text-sm text-foreground">
+          Requesting a <span className="font-medium text-accent">{industryName}</span> website — great choice. Add your details below.
+        </p>
+      )}
+
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className={labelClass}>
@@ -182,6 +193,7 @@ export function ContactForm() {
           id="message"
           name="message"
           rows={5}
+          defaultValue={prefill}
           placeholder="Tell us about your project, goals, and timeline…"
           className={cn(fieldClass, "resize-none", errors.message && "border-red-500/60")}
           aria-invalid={Boolean(errors.message)}

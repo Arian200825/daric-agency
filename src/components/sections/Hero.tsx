@@ -36,17 +36,17 @@ export function Hero() {
             variants={staggerItem}
             className="text-balance text-4xl font-semibold tracking-tight sm:text-6xl lg:text-7xl"
           >
-            Premium websites for{" "}
-            <span className="text-gradient">ambitious brands</span>.
+            Premium websites, built for{" "}
+            <span className="text-gradient">your industry</span>.
           </motion.h1>
 
           <motion.p
             variants={staggerItem}
             className="max-w-2xl text-pretty text-lg leading-relaxed text-muted sm:text-xl"
           >
-            Daric is a premium, AI-powered web agency. We design and build fast,
-            beautiful, conversion-focused websites that make high-end brands look
-            — and perform — like industry leaders.
+            Daric is a premium web agency building industry-specific websites —
+            for restaurants, hotels, healthcare, and beyond. Fast, beautiful, and
+            engineered to convert. Explore our live demos below.
           </motion.p>
 
           <motion.div

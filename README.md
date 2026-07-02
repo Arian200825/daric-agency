@@ -38,6 +38,25 @@ src/
 | Pricing tiers              | `src/content/pricing.ts`      |
 | Portfolio projects         | `src/content/portfolio.ts`    |
 | Colors / theme             | `src/app/globals.css`         |
+| Industry solutions + demos | `src/content/industries.ts`   |
+
+## Industry Solutions (the ecosystem hub)
+
+Daric positions around **industry-specific** premium websites. This is driven by
+`src/content/industries.ts`:
+
+- The home page + `/solutions` showcase every industry with a **live preview**
+  (`DemoPreview` iframes the real demo), a description, and dual CTAs —
+  **View Live Demo** and **Request a Similar Website** (→ `/contact?industry=…`).
+- Each industry gets an auto-generated **service page** at `/solutions/[slug]`
+  (challenges → how Daric solves them → benefits → CTA).
+- Add an industry (or flip `status` to `"live"` + add a `demoUrl`) and its card,
+  service page, and sitemap entry all appear automatically.
+
+**Cross-linking:** Daric links out to every live demo; each live demo links back
+to Daric ("Built by Daric" + a "Get a Custom … Website" CTA to `/contact`).
+Live demos: [restaurant](https://arian200825.github.io/daric-restaurant/) ·
+[hotel](https://arian200825.github.io/daric-platform/).
 
 ## Supabase (lead capture)
 
