@@ -7,8 +7,14 @@ import { Logo } from "./Logo";
  * Footer — brand, sitemap, contact, socials. Server component (no interactivity).
  * Social links with empty hrefs are hidden automatically.
  */
+const legalLinks = [
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
+  { label: "Cookies", href: "/cookies" },
+];
+
 export function Footer() {
-  const year = "2025"; // build-time constant; bump on next deploy if needed
+  const year = "2026"; // build-time constant; bump on next deploy if needed
   const socials = site.socials.filter((s) => s.href);
 
   return (
@@ -74,9 +80,13 @@ export function Footer() {
           <p>
             © {year} {site.legalName}. All rights reserved.
           </p>
-          <p className="font-mono text-xs uppercase tracking-[0.15em]">
-            {site.tagline}
-          </p>
+          <nav aria-label="Legal" className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            {legalLinks.map((l) => (
+              <Link key={l.href} href={l.href} className="transition-colors hover:text-foreground">
+                {l.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </Container>
     </footer>

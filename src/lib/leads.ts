@@ -10,6 +10,8 @@ export interface LeadInput {
   budget?: string;
   plan?: string;
   message: string;
+  /** Origin site — every lead records where it came from. */
+  source?: string;
   /** Honeypot — must stay empty. Bots tend to fill every field. */
   website?: string;
 }
@@ -43,6 +45,7 @@ export function validateLead(input: Partial<LeadInput>): ValidationResult {
       budget: input.budget?.trim() || undefined,
       plan: input.plan?.trim() || undefined,
       message,
+      source: input.source?.trim() || "agency",
     },
   };
 }

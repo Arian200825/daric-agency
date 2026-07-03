@@ -9,7 +9,8 @@ create table if not exists public.leads (
   company     text,
   budget      text,
   plan        text,
-  message     text not null
+  message     text not null,
+  source      text not null default 'agency'  -- every lead records its origin
 );
 
 -- Row Level Security: allow anonymous INSERT (the public contact form),

@@ -15,6 +15,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...nav.map((n) => n.href),
     "/portfolio",
     ...industries.map((i) => `/solutions/${i.slug}`),
+    "/privacy",
+    "/terms",
+    "/cookies",
   ];
   return routes.map((path) => ({
     url: `${site.url}${path === "/" ? "" : path}`,

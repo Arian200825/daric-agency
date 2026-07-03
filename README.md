@@ -93,6 +93,20 @@ NEXT_PUBLIC_BASE_PATH=/daric npm run build   # outputs ./out
 - Founder/about story, real testimonials & client logos
 - Real project images in `public/work/` (gradient placeholders show until then)
 
+## Operational readiness
+
+- **Legal:** `/privacy`, `/terms`, `/cookies` — config-driven (`src/content/legal.ts`),
+  linked in the footer, in the sitemap. Templates for review, not legal advice.
+- **Analytics:** configurable and privacy-friendly (`components/analytics/Analytics.tsx`)
+  — GA + Plausible, loaded only when `NEXT_PUBLIC_GA_ID` / `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` are set.
+- **Email:** transactional templates + sender in `src/lib/email.ts` (contact
+  confirmation, new-lead notification). Runs **server-side only** (serverless /
+  Edge Function) so the API key is never exposed.
+- **Leads:** the contact form records a **source** on every lead and writes to
+  Supabase (`supabase/schema.sql`). Point demo forms' endpoints at the OS inbox.
+- **SEO:** metadata, sitemap, robots, OG image, and JSON-LD are all in place.
+- **Env:** every variable is documented in `.env.local.example`.
+
 ## Scripts
 - `npm run dev` — local dev server
 - `npm run build` — production build

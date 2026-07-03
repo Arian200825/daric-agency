@@ -5,6 +5,7 @@ import { site } from "@/content/site";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { Analytics } from "@/components/analytics/Analytics";
 
 // Technology-company type: geometric-sans display + neutral sans body + mono.
 const displayFont = Space_Grotesk({ variable: "--font-display", subsets: ["latin"], weight: ["500", "600", "700"] });
@@ -72,6 +73,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
