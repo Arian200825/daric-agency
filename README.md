@@ -58,7 +58,7 @@ to Daric ("Built by Daric" + a "Get a Custom … Website" CTA to `/contact`).
 Live demos: [restaurant](https://arian200825.github.io/daric-restaurant/) ·
 [hotel](https://arian200825.github.io/daric-platform/).
 
-## Supabase (lead capture)
+## Supabase setup (lead capture)
 
 1. Create a free project at [supabase.com](https://supabase.com).
 2. Run the SQL in **`supabase/schema.sql`** (Supabase → SQL Editor).
@@ -68,6 +68,38 @@ The contact form writes leads to Supabase **directly from the browser** (anon
 insert, protected by Row Level Security) so it works on static hosting with no
 backend server. Reads are blocked for anonymous users — view leads from the
 Supabase dashboard. Until keys are set, the form shows a friendly fallback.
+Every lead records a **source** so you know which site it came from.
+
+## Email setup (notifications + auto-reply)
+
+The contact email is **env-configurable** — set `NEXT_PUBLIC_CONTACT_EMAIL`
+(defaults to `daricone.web@gmail.com`) and it updates the footer, contact page,
+and notification target without any code change.
+
+Two emails fire on every new lead: an **auto-reply confirmation** to the sender
+and a **notification** to the team. Because the site is statically hosted, these
+run server-side via the included Supabase Edge Function (keeps the API key off
+the client):
+
+1. Get a [Resend](https://resend.com) API key and verify your sending domain.
+2. Deploy the function and set secrets:
+   ```bash
+   supabase functions deploy on-new-lead --no-verify-jwt
+   supabase secrets set RESEND_API_KEY=re_xxx \
+     EMAIL_FROM="Daric <daricone.web@gmail.com>" \
+     CONTACT_EMAIL=daricone.web@gmail.com
+   ```
+3. Add a **Database Webhook** (Database → Webhooks): table `public.leads`,
+   event `INSERT`, type *Supabase Edge Function → on-new-lead*.
+
+Templates + a provider-agnostic sender also live in `src/lib/email.ts` for use
+from any server route. Until `RESEND_API_KEY` is set, email safely no-ops.
+
+## Payment setup
+
+Client deposits and payment providers (Stripe, PayPal, Wise) are configured in
+**Daric OS → Payments**. The agency site itself takes no payments; it captures
+leads that become proposals and deposits inside the OS.
 
 ## Deployment (GitHub Pages)
 

@@ -15,7 +15,8 @@ export const site = {
   locale: "en",
 
   contact: {
-    email: "hello@daric.agency", // default tied to domain — confirm once mailbox exists
+    // Configurable via env — switch mailboxes without touching code.
+    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "daricone.web@gmail.com",
     phone: "", // NEEDS_INPUT
     location: "Remote · Worldwide", // NEEDS_INPUT
     bookingUrl: "", // NEEDS_INPUT: Calendly/Cal.com link for "Book a call"

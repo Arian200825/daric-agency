@@ -5,8 +5,8 @@ import { site } from "@/content/site";
  *
  * ⚠️  Runs SERVER-SIDE only (a serverless function or Supabase Edge Function on
  * lead insert) — never in the static client, so the API key is never exposed.
- * Env: RESEND_API_KEY, EMAIL_FROM (e.g. "Daric <hello@daric.agency>"),
- * LEAD_NOTIFY_TO (where new-lead alerts go).
+ * Env: RESEND_API_KEY, EMAIL_FROM (e.g. "Daric <daricone.web@gmail.com>"),
+ * LEAD_NOTIFY_TO (where new-lead alerts go; defaults to the contact email).
  *
  * The agency triggers these two; the rest of the transactional set
  * (proposal sent, project started/completed) lives in Daric OS.
@@ -17,6 +17,12 @@ export interface EmailTemplate {
   html: string;
   text: string;
 }
+
+/** Where new-lead notifications are delivered. Fully env-configurable. */
+export const CONTACT_EMAIL =
+  process.env.CONTACT_EMAIL ||
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL ||
+  "daricone.web@gmail.com";
 
 function shell(heading: string, bodyHtml: string): string {
   return `<!doctype html><html><body style="margin:0;background:#f5f5f6;font-family:Inter,Arial,sans-serif;color:#0a0a0a">
@@ -70,13 +76,38 @@ export function newLeadNotification(lead: {
  */
 export async function sendEmail(to: string, template: EmailTemplate): Promise<boolean> {
   const key = process.env.RESEND_API_KEY;
-  const from = process.env.EMAIL_FROM;
-  if (!key || !from) return false;
+  const from = process.env.EMAIL_FROM || `Daric <${CONTACT_EMAIL}>`;
+  if (!key) return false;
 
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ from, to, subject: template.subject, html: template.html, text: template.text }),
-  });
-  return res.ok;
+  try {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ from, to, subject: template.subject, html: template.html, text: template.text }),
+    });
+    return res.ok;
+  } catch {
+    // Never let a transient email failure break the request that triggered it.
+    return false;
+  }
+}
+
+/**
+ * Fire both sides of a contact submission — confirmation to the sender, alert to
+ * the team. Failures are swallowed (logged upstream): a lead is already saved,
+ * email is best-effort. Returns which messages actually went out.
+ */
+export async function notifyNewLead(lead: {
+  name: string;
+  email: string;
+  company?: string;
+  message: string;
+  source?: string;
+}): Promise<{ confirmation: boolean; notification: boolean }> {
+  const notifyTo = process.env.LEAD_NOTIFY_TO || CONTACT_EMAIL;
+  const [confirmation, notification] = await Promise.all([
+    sendEmail(lead.email, contactConfirmation(lead.name)),
+    sendEmail(notifyTo, newLeadNotification(lead)),
+  ]);
+  return { confirmation, notification };
 }
